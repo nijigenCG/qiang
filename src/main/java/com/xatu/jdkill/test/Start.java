@@ -7,10 +7,7 @@ import java.io.IOException;
 import java.net.CookieHandler;
 import java.net.URISyntaxException;
 import java.text.ParseException;
-import java.util.concurrent.Executors;
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 /**
  * @author: lianghuan
@@ -22,7 +19,7 @@ public class Start {
     final static String Referer = "Referer";
     final static String RefererArg = "https://passport.jd.com/new/login.aspx";
     //商品id
-    static String pid = "30425081079";
+    static String pid = "100019084146";
     //eid
     static String eid = "W2HEXZSRULGOBXAMFF6J44UTIGCP5QGKRQO5M7KZHYUAU7RT2JBTXRG2ZNRUWHKYX2PHNKRJI2KOM7BZIZ2V3F3C64";
     //fp
@@ -65,7 +62,7 @@ public class Start {
             //开始抢购
             while (true) {
                 //获取京东时间
-                JSONObject jdTime = JSONObject.parseObject(HttpUrlConnectionUtil.get(headers, "https://a.jd.com//ajax/queryServerData.html"));
+                JSONObject jdTime = JSONObject.parseObject(HttpUrlConnectionUtil.get(headers, "https://api.m.jd.com/client.action?functionId=queryMaterialProducts&client=wh5"));
                 Long serverTime = Long.valueOf(jdTime.get("serverTime").toString());
                 if (startTime >= serverTime) {
                     System.out.println("正在等待抢购时间");

@@ -132,8 +132,8 @@ public class RushToPurchase implements Runnable {
         }
         String[] r1 = ip.split(":");
         System.out.println(ip);
-        System.getProperties().setProperty("http.proxyHost", r1[0]);
-        System.getProperties().setProperty("http.proxyPort", r1[1]);
-        System.err.println(r1[0] + ":" + r1[1]);
+        //System.getProperties().setProperty("http.proxyHost", r1[0]);
+        //System.getProperties().setProperty("http.proxyPort", r1[1]);
+        //System.err.println(r1[0] + ":" + r1[1]);
     }
 }
