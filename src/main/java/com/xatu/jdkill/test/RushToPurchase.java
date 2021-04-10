@@ -31,6 +31,7 @@ public class RushToPurchase implements Runnable {
             String gate = null;
             try {
                 gate = HttpUrlConnectionUtil.get(headers, "https://cart.jd.com/gate.action?pcount=1&ptype=1&pid=" + Start.pid);
+                //System.out.printf(gate);
             } catch (IOException e) {
                 e.printStackTrace();
             }

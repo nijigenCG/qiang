@@ -18,8 +18,9 @@ public class Start {
     final static String headerAgentArg = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36";
     final static String Referer = "Referer";
     final static String RefererArg = "https://passport.jd.com/new/login.aspx";
-    //商品id
-    static String pid = "100019084146";
+    //6700xt 100019084146
+    //茅台     100012043978
+    static String pid = "100012043978";
     //eid
     static String eid = "W2HEXZSRULGOBXAMFF6J44UTIGCP5QGKRQO5M7KZHYUAU7RT2JBTXRG2ZNRUWHKYX2PHNKRJI2KOM7BZIZ2V3F3C64";
     //fp
@@ -40,12 +41,12 @@ public class Start {
         //登录
         Login.Login();
         //判断是否开始抢购
-        judgePruchase();
+       // judgePruchase();
         //开始抢购
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 1000, TimeUnit.MILLISECONDS, new PriorityBlockingQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
+       /* ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 1000, TimeUnit.MILLISECONDS, new PriorityBlockingQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
         for (int i = 0; i < 5; i++) {
             threadPoolExecutor.execute(new RushToPurchase());
-        }
+        }*/
         new RushToPurchase().run();
     }
 
@@ -63,7 +64,7 @@ public class Start {
             while (true) {
                 //获取京东时间
                 JSONObject jdTime = JSONObject.parseObject(HttpUrlConnectionUtil.get(headers, "https://api.m.jd.com/client.action?functionId=queryMaterialProducts&client=wh5"));
-                Long serverTime = Long.valueOf(jdTime.get("serverTime").toString());
+                Long serverTime = Long.valueOf(jdTime.get("currentTime2").toString());
                 if (startTime >= serverTime) {
                     System.out.println("正在等待抢购时间");
                     Thread.sleep(300);
