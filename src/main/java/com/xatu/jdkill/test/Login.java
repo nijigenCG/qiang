@@ -14,10 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author: lianghuan
- * @date: 2021/1/9 18:59
- */
 public class Login {
     static String venderId = "";
     static Map<String, List<String>> requestHeaders = new HashMap<String, List<String>>(16);

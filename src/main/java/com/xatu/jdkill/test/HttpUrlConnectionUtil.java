@@ -11,10 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
-/**
- * @author: lianghuan
- * @date: 2021/1/5 22:26
- */
+
 public class HttpUrlConnectionUtil {
     /**
      * get请求

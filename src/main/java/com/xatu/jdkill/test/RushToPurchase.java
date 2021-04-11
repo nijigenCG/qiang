@@ -10,10 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 
-/**
- * @author: lianghuan
- * @date: 2021/1/8 20:51
- */
 public class RushToPurchase implements Runnable {
     //请求头
     volatile static Integer times = 0;

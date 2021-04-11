@@ -9,10 +9,6 @@ import java.net.URISyntaxException;
 import java.text.ParseException;
 import java.util.concurrent.*;
 
-/**
- * @author: lianghuan
- * @date: 2021/1/8 20:59
- */
 public class Start {
     final static String headerAgent = "User-Agent";
     final static String headerAgentArg = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.135 Safari/537.36";
@@ -20,7 +16,9 @@ public class Start {
     final static String RefererArg = "https://passport.jd.com/new/login.aspx";
     //6700xt 100019084146
     //茅台     100012043978
-    static String pid = "100012043978";
+    //r9000k   100019736886
+
+    static String pid = "100019736886";
     //eid
     static String eid = "W2HEXZSRULGOBXAMFF6J44UTIGCP5QGKRQO5M7KZHYUAU7RT2JBTXRG2ZNRUWHKYX2PHNKRJI2KOM7BZIZ2V3F3C64";
     //fp
@@ -41,7 +39,7 @@ public class Start {
         //登录
         Login.Login();
         //判断是否开始抢购
-       // judgePruchase();
+        judgePruchase();
         //开始抢购
        /* ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 1000, TimeUnit.MILLISECONDS, new PriorityBlockingQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
         for (int i = 0; i < 5; i++) {
