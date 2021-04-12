@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
-
+@Deprecated
 public class HttpUrlConnectionUtil {
     /**
      * get请求

@@ -6,7 +6,6 @@ public interface RequestParamConstants {
     String Referer = "Referer";
     String RefererArg = "https://passport.jd.com/new/login.aspx";
 
-    String pid = "100019736886";
     //eid
     String eid = "W2HEXZSRULGOBXAMFF6J44UTIGCP5QGKRQO5M7KZHYUAU7RT2JBTXRG2ZNRUWHKYX2PHNKRJI2KOM7BZIZ2V3F3C64";
     //fp
