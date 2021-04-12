@@ -2,6 +2,7 @@ package com.cg.kill.login;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cg.kill.constants.RequestParamConstants;
+import com.cg.kill.http.OkhttpClient;
 import com.sun.jna.Native;
 import com.sun.jna.Pointer;
 import com.sun.jna.platform.win32.User32;
@@ -11,12 +12,16 @@ import com.sun.webkit.network.CookieManager;
 import com.xatu.jdkill.test.HttpUrlConnectionUtil;
 import com.xatu.jdkill.test.Start;
 
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import okhttp3.Response;
 
 public class LoginService {
     private Map<String, List<String>> requestHeaders = new HashMap<>(16);
@@ -32,6 +37,9 @@ public class LoginService {
         headers.put(RequestParamConstants.Referer, RequestParamConstants.RefererArg);
         //获取二维码
         Long now = System.currentTimeMillis();
+        Response response = OkhttpClient.get(headers,"https://qr.m.jd.com/show?appid=133&size=147&t=" + now);
+        streamToQRFile(response);
+
         HttpUrlConnectionUtil.getQCode(headers, "https://qr.m.jd.com/show?appid=133&size=147&t=" + now);
         //打开二维码
         Runtime.getRuntime().exec("cmd /c QCode.png");
@@ -68,6 +76,18 @@ public class LoginService {
         headers.put("Cookie", cookies);
 
         return ticket;
+    }
+
+    private void streamToQRFile(Response response) throws IOException {
+        InputStream inputStream = response.body().byteStream();
+        OutputStream outputStream = new FileOutputStream("QCode.png");
+        byte[] buffer;
+        int length;
+        buffer = new byte[1024];
+        while ((length = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, length);
+        }
+        outputStream.close();
     }
 
     public void close() {
