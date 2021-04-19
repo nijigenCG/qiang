@@ -26,9 +26,9 @@ public class RushToPurchase implements Runnable {
             //抢购
             String gate = null;
             try {
-                gate = HttpUrlConnectionUtil.get(headers, "https://cart.jd.com/gate.action?pcount=1&ptype=1&pid=" + Start.pid);
+                //gate = HttpUrlConnectionUtil.get(headers, "https://cart.jd.com/gate.action?pcount=1&ptype=1&pid=" + Start.pid);
                 //System.out.printf(gate);
-            } catch (IOException e) {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
             //订单信息

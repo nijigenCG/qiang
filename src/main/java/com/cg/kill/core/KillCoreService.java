@@ -23,7 +23,7 @@ public class KillCoreService {
     headers.put(RequestParamConstants.headerAgent, RequestParamConstants.headerAgentArg);
     headers.put(RequestParamConstants.Referer, RequestParamConstants.RefererArg);
 
-    while (times < 2) {
+    while (times < 1) {
       Map<String, List<String>> stringListMap = new HashMap<>();
       stringListMap = cookieManager.get(new URI("https://trade.jd.com/shopping/order/getOrderInfo.action"), stringListMap);
       List<String> cookie = stringListMap.get("Cookie");
@@ -64,7 +64,7 @@ public class KillCoreService {
       headers.put("Cookie", cookie.get(0).toString());
       String submitOrder = null;
       try {
-        if (times < 2) {
+        if (times < 1) {
           submitOrder = HttpUrlConnectionUtil.post(headers, "https://trade.jd.com/shopping/order/submitOrder.action", null);
         } else {
           System.out.println("已抢购" + 2 + "件，请尽快完成付款");
@@ -89,7 +89,7 @@ public class KillCoreService {
 
       if (success == "true") {
         System.out.println("抢购成功，请尽快完成付款");
-        times++;
+        break;
       } else {
         if (message != null) {
           System.out.println(message);

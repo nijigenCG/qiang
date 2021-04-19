@@ -6,7 +6,7 @@ public enum ProductEnum {
   RX6800("100009440073","RX6800 AMD原价卡"),
   RTX3070("100016046826","微星3070 ￥8299"),
   TEST_1660S("100009149314","测试用的抢购商品，傻逼才买"),
-  TEST("7039524","无需抢购的测试产品");
+  TEST("30844672751","无需抢购的测试产品");
 
   ProductEnum(String sku, String desc) {
     this.sku = sku;

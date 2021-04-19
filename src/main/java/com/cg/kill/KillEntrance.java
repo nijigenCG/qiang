@@ -17,7 +17,7 @@ public class KillEntrance {
     static CookieManager cookieManager = new CookieManager();
 
     public static void main(String[] args) throws Exception {
-        String productSku = ProductEnum.TEST.getSku();
+        String productSku = ProductEnum.RX6700XT.getSku();
 
         JSONObject headers = new JSONObject();
         headers.put(RequestParamConstants.headerAgent, RequestParamConstants.headerAgentArg);

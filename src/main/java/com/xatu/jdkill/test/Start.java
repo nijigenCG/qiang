@@ -18,7 +18,7 @@ public class Start {
     //茅台     100012043978
     //r9000k   100019736886
 
-    static String pid = "100019736886";
+    static String pid = "100012043978";
     //eid
     static String eid = "W2HEXZSRULGOBXAMFF6J44UTIGCP5QGKRQO5M7KZHYUAU7RT2JBTXRG2ZNRUWHKYX2PHNKRJI2KOM7BZIZ2V3F3C64";
     //fp
@@ -40,6 +40,10 @@ public class Start {
         Login.Login();
         //判断是否开始抢购
         judgePruchase();
+        JSONObject headers = new JSONObject();
+        headers.put(Start.headerAgent, Start.headerAgentArg);
+        headers.put(Start.Referer, Start.RefererArg);
+        //HttpUrlConnectionUtil.get(headers, "https://cart.jd.com/gate.action?pcount=1&ptype=1&pid=" + Start.pid);
         //开始抢购
        /* ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(5, 10, 1000, TimeUnit.MILLISECONDS, new PriorityBlockingQueue<Runnable>(), Executors.defaultThreadFactory(), new ThreadPoolExecutor.AbortPolicy());
         for (int i = 0; i < 5; i++) {
@@ -61,14 +65,19 @@ public class Start {
             //开始抢购
             while (true) {
                 //获取京东时间
-                JSONObject jdTime = JSONObject.parseObject(HttpUrlConnectionUtil.get(headers, "https://api.m.jd.com/client.action?functionId=queryMaterialProducts&client=wh5"));
-                Long serverTime = Long.valueOf(jdTime.get("currentTime2").toString());
-                if (startTime >= serverTime) {
-                    System.out.println("正在等待抢购时间");
-                    Thread.sleep(300);
-                } else {
-                    break;
+                try{
+                    JSONObject jdTime = JSONObject.parseObject(HttpUrlConnectionUtil.get(headers, "https://api.m.jd.com/client.action?functionId=queryMaterialProducts&client=wh5"));
+                    Long serverTime = Long.valueOf(jdTime.get("currentTime2").toString());
+                    if (startTime >= serverTime) {
+                        System.out.println("正在等待抢购时间");
+                        Thread.sleep(300);
+                    } else {
+                        break;
+                    }
+                }catch (Exception e){
+
                 }
+
             }
         }
     }

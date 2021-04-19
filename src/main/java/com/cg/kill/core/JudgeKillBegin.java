@@ -23,14 +23,19 @@ public class JudgeKillBegin {
       //开始抢购
       while (true) {
         //获取京东时间
-        JSONObject jdTime = JSONObject.parseObject(HttpUrlConnectionUtil.get(headers, "https://api.m.jd.com/client.action?functionId=queryMaterialProducts&client=wh5"));
-        Long serverTime = Long.valueOf(jdTime.get("currentTime2").toString());
-        if (startTime >= serverTime) {
-          System.out.println("正在等待抢购时间");
-          Thread.sleep(300);
-        } else {
-          break;
+        try{
+          JSONObject jdTime = JSONObject.parseObject(HttpUrlConnectionUtil.get(headers, "https://api.m.jd.com/client.action?functionId=queryMaterialProducts&client=wh5"));
+          Long serverTime = Long.valueOf(jdTime.get("currentTime2").toString());
+          if (startTime >= serverTime) {
+            System.out.println("正在等待抢购时间");
+            Thread.sleep(300);
+          } else {
+            break;
+          }
+        }catch (Exception e){
+          System.out.println(e);
         }
+
       }
     }
   }
